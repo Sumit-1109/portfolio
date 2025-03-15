@@ -1,0 +1,67 @@
+.infinite-moving-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+  
+    &:hover .infinite-moving-list {
+      animation-play-state: paused;
+    }
+  }
+  
+  .infinite-moving-list {
+    display: flex;
+    gap: 10px;
+    padding: 20px 0;
+    width: max-content;
+    animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
+    animation-play-state: running; // Default running
+  }
+
+  
+  .infinite-moving-item {
+    width: fit-content;
+    list-style: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(100%);
+    cursor: pointer; /* Ensure hover is detected */
+  }
+  
+  .infinite-moving-item.hovered {
+    filter: grayscale(0%) !important;
+  }
+  
+  /* Fallback CSS hover effect */
+  .infinite-moving-item:hover {
+    filter: grayscale(0%) !important;
+  }
+  
+  .infinite-moving-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .infinite-moving-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .infinite-moving-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
