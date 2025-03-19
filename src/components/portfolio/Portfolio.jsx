@@ -9,27 +9,31 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
-    title: "Mini Link Management Platform",
+    title: "Shr-L-ink it",
     img: MiniLink,
     desc: "Developed a web application for secure URL shortening, user authentication, click tracking, analytics, responsive design, metadata tracking, link editing, search filtering, fast processing, and pagination.",
+    deploy: "https://link-management-frontend.vercel.app"
   },
   {
     id: 2,
-    title: "TypeBot",
+    title: "FormBot",
     img: formbot,
     desc: "Developed a form builder app with user authentication, form and folder management, dashboard sharing, access control, public form sharing, response tracking, analytics, and engagement metrics.",
+    deploy: "https://form-bot-frontend-sandy.vercel.app"
   },
   {
     id: 3,
     title: "Job Finder",
     img: jobfinder,
     desc: "Developed a job finder platform with user authentication, job posting, applications, advanced search, filtering, sorting, pagination, and dynamic data updates.",
+    deploy: "https://jobfinder-capstone-frontend.onrender.com"
   },
   {
     id: 4,
     title: "Pocket Notes",
     img: pocketNotes,
     desc: "Developed a responsive note-taking app with React.js, React Router, and Context API for seamless note creation, management, and dynamic navigation.",
+    deploy: "https://pocket-notes-tawny-rho.vercel.app/"
   },
 ];
 
@@ -52,7 +56,7 @@ const Single = ({ item }) => {
           <motion.div className="textContainer" style={{y}}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            <button onClick={() => window.open(item.deploy, "_blank")}>See Demo</button>
           </motion.div>
         </div>
       </div>

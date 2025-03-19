@@ -9,46 +9,49 @@ import Parallax from "./components/parallax/Parallax";
 import Portfolio from "./components/portfolio/Portfolio";
 import Services from "./components/services/Services";
 import InfiniteMovingCard from "./components/InfiniteMovingCards/InfiniteMovingCard";
+import { useRef } from "react";
 
 const App = () => {
+
+  const portfolioRef = useRef(null);
+  const contactRef = useRef(null);
+
   return (
     <div>
       <Cursor />
       <section id="Homepage">
         <Navbar />
-        <Hero />
+        <Hero portfolioRef = {portfolioRef} contactRef = {contactRef} />
       </section>
       
-      {/* Skills Parallax */}
+
       <section id="SkillsParallax">
         <Parallax type="skills" />
       </section>
 
-      {/* Skills Component - Placeholder for now */}
+
       <section id="Skills">
       <InfiniteMovingCard />
       </section>
 
-      {/* Services Parallax */}
+
       <section id="ServicesParallax">
         <Parallax type="services" />
       </section>
 
-      {/* Services Component */}
+
       <section id="Services">
         <Services />
       </section>
 
-      {/* Portfolio Parallax */}
-      <section id="Portfolio">
+
+      <section id="Portfolio" ref={portfolioRef}>
   <Parallax type="portfolio" />
 </section>
 <Portfolio />
 
 
-
-      {/* Contact */}
-      <section id="Contact">
+      <section id="Contact" ref={contactRef}>
         <Contact />
       </section>
     </div>

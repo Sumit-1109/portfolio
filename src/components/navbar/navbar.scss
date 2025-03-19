@@ -3,18 +3,20 @@
 .navbar {
   height: 100px;
   width: 100vw;
+  background: transparent;
 
   .wrapper {
     max-width: 1366px;
-    margin: auto;
+    margin-right: 40px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 100%;
 
     @include mobile {
       justify-content: flex-end;
       padding: 20px;
+      margin-right: 10px;
     }
 
     span {
@@ -29,9 +31,39 @@
       display: flex;
       gap: 20px;
 
-      img {
-        width: 18px;
-        height: 18px;
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+        background-color: transparent;
+
+        img {
+          width: 22px;
+          height: 22px;
+          filter: grayscale(80%);
+          transition: all 0.3s ease-in-out;
+
+          @include mobile {
+            filter: grayscale(0%);
+          }
+
+          &:hover {
+            background-color: transparent;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+          }
+
+          &:active {
+            transform: scale(0.9);
+            opacity: 0.7;
+          }
+        }
       }
     }
   }

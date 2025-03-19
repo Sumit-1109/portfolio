@@ -2,7 +2,11 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+    margin-top: 10%;
     mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
     &:hover .infinite-moving-list {
       animation-play-state: paused;
@@ -12,29 +16,28 @@
   .infinite-moving-list {
     display: flex;
     gap: 10px;
-    padding: 20px 0;
     width: max-content;
     animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
-    animation-play-state: running; // Default running
+    animation-play-state: running;
   }
 
   
   .infinite-moving-item {
     width: fit-content;
     list-style: none;
-    padding: 16px 32px;
+    padding: 0px 32px;
     border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease-in-out;
     filter: grayscale(100%);
-    cursor: pointer; /* Ensure hover is detected */
+    cursor: pointer;
   }
   
   .infinite-moving-item.hovered {
     filter: grayscale(0%) !important;
   }
   
-  /* Fallback CSS hover effect */
+
   .infinite-moving-item:hover {
     filter: grayscale(0%) !important;
   }

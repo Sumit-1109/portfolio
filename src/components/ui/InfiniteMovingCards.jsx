@@ -36,7 +36,7 @@ const InfiniteMovingCards = ({ items, direction = "left", speed = "fast" }) => {
   const getSpeed = () => {
     if (containerRef.current) {
       const duration =
-        speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
+        speed === "fast" ? "20s" : speed === "normal" ? "20s" : "80s";
       containerRef.current.style.setProperty("--animation-duration", duration);
     }
   };

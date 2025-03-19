@@ -1,7 +1,6 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
 import { TextHoverEffect } from "../TextHoverEffect/TextHoverEffect";
-import { TextHoverEffectForButtons } from "../TextHoverEffect/TextHoverEffectForButtons";
 
 const textVariants = {
   initial: {
@@ -40,7 +39,7 @@ const sliderVariants = {
   },
 };
 
-const Hero = () => {
+const Hero = ({ portfolioRef, contactRef }) => {
   return (
     <div className="hero">
       <div className="wrapper">
@@ -52,29 +51,45 @@ const Hero = () => {
         >
           <motion.h2 variants={textVariants}>SUMIT KUMAR</motion.h2>
 
-          {/* Text Rotation with "Developer" constant */}
           <motion.h1 variants={textVariants} className="hoverTextEffect">
             <TextHoverEffect 
-              texts={[
-                "Web Developer", 
-                "Software Developer",
-                "Fullstack Developer"
-              ]} 
+              texts={["Web Developer", "Software Developer", "Fullstack Developer"]} 
               duration={0.5} 
               width="100%" 
               height="auto" 
             />
           </motion.h1>
 
-          {/* Updated Button Hover Effect */}
+          {/* Updated Buttons with Hover and Click Effects */}
           <motion.div variants={textVariants} className="buttons">
-  <motion.button variants={textVariants}>
-    <TextHoverEffectForButtons texts={["See the Latest Works"]} />
-  </motion.button>
-  <motion.button variants={textVariants}>
-    <TextHoverEffectForButtons texts={["Contact Me"]} />
-  </motion.button>
-</motion.div>
+          <motion.button
+  whileHover={{ scale: 1.05, backgroundColor: "white", color: "black" }}
+  whileTap={{ scale: 0.9 }}
+  transition={{ duration: 0.2 }}
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    portfolioRef.current?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  See the Latest Works
+</motion.button>
+
+<motion.button
+  whileHover={{ scale: 1.05, backgroundColor: "white", color: "black" }}
+  whileTap={{ scale: 0.9 }}
+  transition={{ duration: 0.2 }}
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  Contact Me
+</motion.button>
+
+
+          </motion.div>
 
 
           <motion.img

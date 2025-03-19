@@ -6,14 +6,15 @@ export const TextHoverEffect = ({ texts, fontSize = "100px", width = "300px", he
   const svgRef = useRef(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const [responsiveFontSize, setResponsiveFontSize] = useState(fontSize);
 
   // 🔄 Rotating Text Effect
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
-  const typingSpeed = 100; // ⏳ Typing Speed
-  const deletingSpeed = 50; // 🔥 Deleting Speed
-  const period = 3000; // Time before switching words
+  const typingSpeed = 100;
+  const deletingSpeed = 50;
+  const period = 3000;
 
   useEffect(() => {
     let ticker = setTimeout(() => tick(), isDeleting ? deletingSpeed : typingSpeed);
@@ -44,6 +45,22 @@ export const TextHoverEffect = ({ texts, fontSize = "100px", width = "300px", he
       });
     }
   }, [cursor]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setResponsiveFontSize("35px");
+      } else if (window.innerWidth < 1024) {
+        setResponsiveFontSize("80px");
+      } else {
+        setResponsiveFontSize(fontSize);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [fontSize]);
 
   return (
     <svg
@@ -84,11 +101,31 @@ export const TextHoverEffect = ({ texts, fontSize = "100px", width = "300px", he
         </mask>
       </defs>
 
-      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fill="white" stroke="url(#defaultGradient)" strokeWidth="0.3" fontSize={fontSize} className="font-bold">
+      <text
+        x="50%"
+        y="50%"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="white"
+        stroke="url(#defaultGradient)"
+        strokeWidth="0.3"
+        fontSize={responsiveFontSize}
+        className="font-bold"
+      >
         {text}
       </text>
 
-      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fill="url(#hoverGradient)" stroke="none" mask="url(#textMask)" fontSize={fontSize} className="font-bold">
+      <text
+        x="50%"
+        y="50%"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="url(#hoverGradient)"
+        stroke="none"
+        mask="url(#textMask)"
+        fontSize={responsiveFontSize}
+        className="font-bold"
+      >
         {text}
       </text>
     </svg>

@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background-color: #0c0c1d;
+  background-color: #150c1d;
   color: lightgray;
 }
 
@@ -22,7 +22,6 @@ a {
 
 section {
   height: 100vh;
-  width: calc(100vw - 18px);
   scroll-snap-align: center;
   overflow: hidden;
 }
